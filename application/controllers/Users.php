@@ -44,5 +44,27 @@ class Users extends CI_Controller {
 		}
 	}
 
+	public function update($user_id)
+	{
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$data["user"] = $this->users_model->get_user($user_id);
+
+		$data["page_title"] = "Update User";
+		$this->form_validation->set_rules('first_name', 'First name', 'required');
+		$this->form_validation->set_rules('last_name', 'Last name', 'required');
+		$this->form_validation->set_rules('email', 'Email', array('required','valid_email'));
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('header', $data); 
+			$this->load->view('users/update', $data);
+			$this->load->view('footer');
+		} else {
+			$this->users_model->update_user($user_id);
+			redirect(base_url('/'));
+		}
+	}
+
+
 
 }
