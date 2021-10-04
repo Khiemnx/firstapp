@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
 
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
     <title> <?php echo $page_title; ?> </title>
    
   </head>

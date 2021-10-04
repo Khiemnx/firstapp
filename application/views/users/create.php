@@ -16,6 +16,10 @@
             <label for="email">Email</label>
             <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email">
         </div>
+		<div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" class="form-control" name="phone_number" id="phone_number" placeholder="Enter your phone number">
+        </div>
         <button type="submit" class="btn btn-primary">Create</button>
         <?php echo form_close(); ?>
     </div>

@@ -33,6 +33,7 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('first_name', 'First name', 'required');
 		$this->form_validation->set_rules('last_name', 'Last name', 'required');
 		$this->form_validation->set_rules('email', 'Email', array('required','valid_email'));
+		$this->form_validation->set_rules('phone_number', 'Phone number', 'required');
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('header', $data); 
@@ -55,6 +56,7 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('first_name', 'First name', 'required');
 		$this->form_validation->set_rules('last_name', 'Last name', 'required');
 		$this->form_validation->set_rules('email', 'Email', array('required','valid_email'));
+		$this->form_validation->set_rules('phone_number', 'Phone number', 'required');
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('header', $data); 
 			$this->load->view('users/update', $data);
@@ -71,7 +73,23 @@ class Users extends CI_Controller {
 		redirect(base_url('/'));
 	}
 
+	public function view($user_id) {
+		$data["user"] = $this->users_model->get_user($user_id);
+		$data["page_title"] = "View User";
 
+		$this->load->view('header', $data); 
+		$this->load->view('users/view', $data);
+		$this->load->view('footer');
+	}
 
-
+	public function deleteMulti() {
+		$data = $this->input->post('data');
+		$data = substr($data, 1, -1); //remove first and last character from string ('[' and ']')
+		$usersID = explode(",",$data);
+		foreach ($usersID as $ele) {
+			$ele =  substr($ele, 1, -1); //remove first and last character from string (' "" ' and ' "" ')
+			echo $ele;
+			$this->users_model->delete_user($ele);
+		}
+	}
 }
