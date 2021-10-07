@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
 
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<style>
+		input[type=checkbox] {
+    		transform: scale(1.3);
+		}
+	</style>
 
     <title> <?php echo $page_title; ?> </title>
    

@@ -34,8 +34,10 @@
 	  <button id="DeleteAll" class="btn btn-danger"> Delete </button>
   </div>
 </main>
-<script type="text/JavaScript" >
 
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script type="text/JavaScript" >
 	$("#cus_check").change(function () {
 		$("input:checkbox.checkcustom").prop('checked', $(this).prop("checked"));
 	})
@@ -63,7 +65,8 @@
 					alert('Xóa thành công'); 
 					window.location.reload();
 				}
-       		});
+			});
 		}
 	})
+	
 </script>
